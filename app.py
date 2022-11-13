@@ -1,5 +1,4 @@
 import requests
-import re
 from html_table_parser.parser import HTMLTableParser
 import flask
 from flask import request, jsonify
