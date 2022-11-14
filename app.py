@@ -50,6 +50,8 @@ def home():
 				values[height] = values[height] + [{"name": name, "value": value, "unit": unit}]
 		
 		stations[stationName] = {"time": time, "values": values}
-	return jsonify(stations)
+	response = jsonify(stations)
+    	response.headers.add('Access-Control-Allow-Origin', '*')
+    	return response
 
 app.run()
