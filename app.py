@@ -29,7 +29,7 @@ def home():
         response.headers.add('Access-Control-Allow-Origin', '*')
         return response
     else:
-        nearestStation = dwd.getNearestStation(latitude, longitude)
+        nearestStation = mds.getNearestStation(latitude, longitude)
         response = jsonify({nearestStation[0]: nearestStation[1]})
         response.headers.add('Access-Control-Allow-Origin', '*')
         return response
