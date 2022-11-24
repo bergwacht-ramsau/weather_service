@@ -1,5 +1,6 @@
 import os
 import flask
+import atexit
 from flask import request, jsonify
 from modules.dwd import DWD
 from modules.mds import MDS
@@ -47,8 +48,11 @@ def warnings():
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
 
-try:
-    app.run()
-finally:
-    mds.deinit()
+
+#defining function to run on shutdown
+def close_running_threads():
     dwd.deinit()
+    mds.deinit()
+
+#Register the function to be called on exit
+atexit.register(close_running_threads)
