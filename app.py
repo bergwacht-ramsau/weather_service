@@ -47,5 +47,8 @@ def warnings():
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
 
-
-app.run()
+try:
+    app.run()
+finally:
+    mds.deinit()
+    dwd.deinit()
